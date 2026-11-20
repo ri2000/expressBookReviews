@@ -11,7 +11,8 @@ public_users.post("/register", (req,res) => {
 
     if (isValid(username)){
         if (!users.find((user) => user.username === username)){
-            users.push({username, password});
+            users.push({username:  username, password: password});
+            console.log(`Users after push: ${JSON.stringify(users)}`);
             return res.status(200).send(`User - username: ${username} password: ${password} added!`);
         }
         else{
