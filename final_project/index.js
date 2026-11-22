@@ -15,7 +15,6 @@ app.use("/customer/auth/*", function auth(req,res,next){
         let token = req.session.authentication['token'];
 
         if(jwt.verify(token, 'access')){
-            res.status(200).send("The user is authenticated...");
             next();
         }
         else{

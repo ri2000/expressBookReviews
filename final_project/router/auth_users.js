@@ -13,7 +13,7 @@ const authenticatedUser = (username, password)=>{ //returns boolean
     const target = users.find((user) => user.username === username);
     console.log(`current target: ${JSON.stringify(target)}`);
     if (target){
-        return target[password] === password;
+        return target.password === password;
     }
     return false;
 }
@@ -21,7 +21,7 @@ const authenticatedUser = (username, password)=>{ //returns boolean
 //only registered users can login
 regd_users.post("/login", (req,res) => {
     const username = req.body.username;
-    const password = req.body.passsword;
+    const password = req.body.password;
 
     console.log(JSON.stringify(users));
 
@@ -41,7 +41,13 @@ regd_users.post("/login", (req,res) => {
 regd_users.put("/auth/review/:isbn", (req, res) => {
     let book = books[req.params.isbn];
     if (book){
-        book.reviews[req.session.authentication.username] = req.query.review;
+        if (req.query[req.session.authentication.username]){
+            book.reviews[req.session.authentication.username] = req.query[req.session.authentication.username];
+            return res.status(200).send("The review was updated succesfully");
+        }
+        else{
+            return res.status(401).send("The username in the query is not loged in...");
+        }
     }
     else{
         return res.status(404).sendStatus(`There is no book with the isbn: ${req.params.isbn}`);
