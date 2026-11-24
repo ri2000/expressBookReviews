@@ -66,7 +66,7 @@ async function getAllBooks(){
         const response = await axios.get("http://localhost:5000/");
         console.log(response);
     }
-    except(error){
+    catch(error){
         console.log(error);
     }
 }
@@ -77,7 +77,7 @@ async function getBookById(id){
         const response = await axios.get("http://localhost:5000/isbn/${id}");
         console.log(response);
     }
-    except(error){
+    catch(error){
         console.log(error);
     }
 }
@@ -89,7 +89,7 @@ async function getBookByAuthor(author){
         const response = await axios.get("http://localhost:5000/${encodedAuthor}");
         console.log(response);
     }
-    except(error){
+    catch(error){
         console.log(error);
     }
 }
@@ -101,7 +101,7 @@ async function getBookByTitle(title){
         const response = await axios.get("http://localhost:5000/${encodedTitle}");
         console.log(response);
     }
-    except(error){
+    catch(error){
         console.log(error);
     }
 }
