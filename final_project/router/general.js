@@ -61,40 +61,50 @@ public_users.get('/review/:isbn',function (req, res) {
     }).map((key) => books[key].reviews)))
 });
 
-axios
-.get("http://localhost:5000/")
-.then(function(response) {
-    console.log(response);
-})
-.catch(function(error){
-    console.log(error);
-});
+async function getAllBooks(){
+    try{
+        const response = await axios.get("http://localhost:5000/");
+        console.log(response);
+    }
+    except(error){
+        console.log(error);
+    }
+}
+getAllBooks();
 
-axios
-.get("http://localhost:5000/isbn/1")
-.then(function(response) {
-    console.log(response);
-})
-.catch(function(error){
-    console.log(error);
-});
+async function getBookById(id){
+    try{
+        const response = await axios.get("http://localhost:5000/isbn/${id}");
+        console.log(response);
+    }
+    except(error){
+        console.log(error);
+    }
+}
+getBookById(1);
 
-axios
-.get("http://localhost:5000/author/Unknown")
-.then(function(response) {
-    console.log(response);
-})
-.catch(function(error){
-    console.log(error);
-});
+async function getBookByAuthor(author){
+    try{
+        const encodedAuthor = encodeURIComponent(author);
+        const response = await axios.get("http://localhost:5000/${encodedAuthor}");
+        console.log(response);
+    }
+    except(error){
+        console.log(error);
+    }
+}
+getBookByAuthor("Unknown");
 
-axios
-.get("http://localhost:5000/title/The%20Book%20Of%20Job")
-.then(function(response) {
-    console.log(response);
-})
-.catch(function(error){
-    console.log(error);
-});
+async function getBookByTitle(title){
+    try{
+        const encodedTitle = encodeURIComponent(title);
+        const response = await axios.get("http://localhost:5000/${encodedTitle}");
+        console.log(response);
+    }
+    except(error){
+        console.log(error);
+    }
+}
+getBookByAuthor("The Book Of Job");
 
 module.exports.general = public_users;
