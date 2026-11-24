@@ -71,7 +71,7 @@ axios
 });
 
 axios
-.get("http://localhost:5000/isbn/2")
+.get("http://localhost:5000/isbn/1")
 .then(function(response) {
     console.log(response);
 })
@@ -80,7 +80,7 @@ axios
 });
 
 axios
-.get("http://localhost:5000/author/Chinua%20Achebe")
+.get("http://localhost:5000/author/Unknown")
 .then(function(response) {
     console.log(response);
 })
@@ -89,7 +89,7 @@ axios
 });
 
 axios
-.get("http://localhost:5000/title/Fairy%20tales")
+.get("http://localhost:5000/title/The%20Book%20Of%20Job")
 .then(function(response) {
     console.log(response);
 })
