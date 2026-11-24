@@ -74,7 +74,7 @@ getAllBooks();
 
 async function getBookById(id){
     try{
-        const response = await axios.get("http://localhost:5000/isbn/${id}");
+        const response = await axios.get(`http://localhost:5000/isbn/${id}`);
         console.log(response);
     }
     catch(error){
@@ -86,7 +86,7 @@ getBookById(1);
 async function getBookByAuthor(author){
     try{
         const encodedAuthor = encodeURIComponent(author);
-        const response = await axios.get("http://localhost:5000/${encodedAuthor}");
+        const response = await axios.get(`http://localhost:5000/auth/${encodedAuthor}`);
         console.log(response);
     }
     catch(error){
@@ -98,7 +98,7 @@ getBookByAuthor("Unknown");
 async function getBookByTitle(title){
     try{
         const encodedTitle = encodeURIComponent(title);
-        const response = await axios.get("http://localhost:5000/${encodedTitle}");
+        const response = await axios.get(`http://localhost:5000/title/${encodedTitle}`);
         console.log(response);
     }
     catch(error){
